@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<ul>
+
+    <h3> Album: {{ album.title }}, {{ album.release_year }} </h3>
+
+    <p>Lista de músicas do álbum:</p>
+    {% for musica in songs %}
+    <li>
+        <a href="{% url 'bandas:song_detail' musica.id %}">{{ musica }}</a>
+    </li>
+    {% endfor%}
+</ul>
+
+{% endblock content %}
