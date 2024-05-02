@@ -2,6 +2,7 @@
 {% block content %}
 <h1>Bands</h1>
 <ul>
+  local commit
   {% for band in bands %}
     <li><a href="{% url 'bandas:band_detail' band.id %}">{{ band.name }}</a></li>  {% endfor %}
 </ul>
