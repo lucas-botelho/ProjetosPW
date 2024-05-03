@@ -33,7 +33,7 @@ def djangoAppInit(app_name):
 
         with open(projectUrls, 'r+') as file:
             lines = file.readlines()
-            new_line = f"   path('{app_name}/', include('{app_name}.urls')),\n"
+            new_line = f"    path('{app_name}/', include('{app_name}.urls')),\n"
             lines.insert(-1, new_line)
             file.seek(0)
             file.writelines(lines)

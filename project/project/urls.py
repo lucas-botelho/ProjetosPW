@@ -26,4 +26,7 @@ urlpatterns = [
     path('bandas/', include('bandas.urls')),
     path('artigos/', include('artigos.urls')),
     path('filmes/', include('filmes.urls')),
+    path('curso/', include('curso.urls')),
+    path('autenticacao/', include('autenticacao.urls')),
+    path('biblioteca/', include('biblioteca.urls')),
 ]

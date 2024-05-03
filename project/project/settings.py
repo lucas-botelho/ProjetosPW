@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'project',
     'artigos',
     'filmes',
+    'curso',
+    'autenticacao',
+    'biblioteca',
 ]
 
 MIDDLEWARE = [
