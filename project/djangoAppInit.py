@@ -1,7 +1,6 @@
 import os
 import subprocess
 
-
 def djangoAppInit(app_name):
 
     command = f'python manage.py startapp {app_name}'
@@ -27,13 +26,11 @@ def djangoAppInit(app_name):
         newProjectPath = os.path.abspath(f'./{app_name}')
 
         with open(f'{newProjectPath}/urls.py', 'w') as file:
-            content = "from django.urls import path\nfrom . import views\n\nurlpatterns = [\n\n]"
+            content = "from django.urls import path\nfrom . import views\n\nurlpatterns = [\n   \n]"
             file.write(content)
     else:
             print(result.stderr)
 
 
-appname = input("new app name=")
-
-djangoAppInit(app_name=appname)
+djangoAppInit(app_name=input("new app name="))
 
