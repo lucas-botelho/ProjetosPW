@@ -23,7 +23,16 @@ def djangoAppInit(app_name):
         
         with open(pySettings, 'w') as file:
             file.writelines(lines)
-      
+
+        newProjectPath = os.path.abspath(f'./{app_name}')
+
+        with open(f'{newProjectPath}/urls.py', 'w') as file:
+            content = "from django.urls import path\nfrom . import views\n\nurlpatterns = [\n\n]"
+            file.write(content)
+    else:
+            print(result.stderr)
+
+
 appname = input("new app name=")
 
 djangoAppInit(app_name=appname)
