@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'bandas',
     'project',
     'artigos',
-    'filmes'
+    'filmes',
 ]
 
 MIDDLEWARE = [
