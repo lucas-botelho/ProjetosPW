@@ -1,6 +1,12 @@
-<ul class="app-submenu">
-    <!-- <li><a href="{% url 'allapps' %}">pwsite</a></li> -->
-    <li><a href="{% url 'noobsite' %}">noobsite</a></li>
-    <li><a href="{% url 'pwsite:index' %}">pwsite</a></li>
-    <li><a href="{% url 'bandas:band_list' %}">bandas</a></li>
-</ul>
+{% extends 'base_layout.html' %}
+
+{% block title %}Projetos{% endblock %}
+
+{% block content %}
+    <ul class="app-submenu">
+        <!-- <li><a href="{% url 'allapps' %}">pwsite</a></li> -->
+        <li><a href="{% url 'noobsite' %}">noobsite</a></li>
+        <li><a href="{% url 'pwsite:index' %}">pwsite</a></li>
+        <li><a href="{% url 'bandas:band_list' %}">bandas</a></li>
+    </ul>
+{% endblock %}

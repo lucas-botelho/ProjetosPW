@@ -1,0 +1,73 @@
+{% load tz %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lucas Botelh - a22201202{% endblock %}</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>{% block header_title %}{% endblock %}</h1>
+            <ul>
+                <li><a href="#">Página Inicial</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Conteúdo da Página -->
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; {% block footer_text %} {% now "Y" %} {% endblock %} Lucas Botelho - a22201202 - LEI</p>
+    </footer>
+</body>
+</html>
