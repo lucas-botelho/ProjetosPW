@@ -20,15 +20,15 @@ class Disciplina(models.Model):
     year = models.IntegerField()
     semester = models.CharField(max_length=100)
     ects = models.IntegerField()
-    curricularIUnitReadableCode = models.IntegerField()
+    curricularIUnitReadableCode = models.CharField(max_length=100)
     scientificArea = models.ForeignKey(AreaCientifica, on_delete=models.CASCADE)
     course = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.name
-    
+
 class Projeto(models.Model):
-    disciplina = models.OneToOneField('Disciplina', on_delete=models.CASCADE)
+    disciplina = models.ForeignKey('Disciplina', on_delete=models.CASCADE)
     descricao = models.TextField()
     conceitos_aplicados = models.TextField()
     tecnologias_usadas = models.TextField()
@@ -38,7 +38,8 @@ class Projeto(models.Model):
 
     def __str__(self):
         return f"Projeto para {self.disciplina.name}"
-    
+
+
 class LinguagemDeProgramacao(models.Model):
     nome = models.CharField(max_length=100)
 

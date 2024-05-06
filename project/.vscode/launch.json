@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Django",
+            "type": "debugpy",
+            "request": "launch",
+            "args": ["runserver"],
+            "django": true,
+            "autoStartBrowser": false,
+            "program": "${workspaceFolder}\\manage.py"
+        },
+        {
+            "name": "Python: Debug Script",
+            "type": "python",
+            "request": "launch",
+            "program": "E:\\Lusofona\\Semestre 4\\Programacao Web\\ProjetosPW\\project\\curso\\loader.py",
+            "env": {},
+            "args": [],
+            "console": "integratedTerminal"
+        }
+    ]
+}
