@@ -35,6 +35,7 @@ class Projeto(models.Model):
     imagem = models.ImageField(upload_to='projeto_imagens/', null=True, blank=True)
     video_link = models.URLField(blank=True)
     github_repo_link = models.URLField(blank=True)
+    language = models.ForeignKey('LinguagemDeProgramacao', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"Projeto para {self.disciplina.name}"

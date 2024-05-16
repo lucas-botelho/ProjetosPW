@@ -1,23 +1,21 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "name": "Python Debugger: Django",
             "type": "debugpy",
             "request": "launch",
-            "args": ["runserver"],
+            "args": [
+                "runserver",
+                "--noreload",
+                "127.0.0.1:8005",
+            ],
             "django": true,
             "autoStartBrowser": false,
             "program": "${workspaceFolder}\\manage.py"
-        },
-        {
-            "name": "Python: Debug Script",
-            "type": "python",
-            "request": "launch",
-            "program": "E:\\Lusofona\\Semestre 4\\Programacao Web\\ProjetosPW\\project\\curso\\loader.py",
-            "env": {},
-            "args": [],
-            "console": "integratedTerminal"
         }
     ]
 }

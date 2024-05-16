@@ -1,4 +1,41 @@
-<h1>{{ curso.name }}</h1>
-<p><strong>Objetivos:</strong> {{ curso.objectives }}</p>
-<p><strong>Apresentação:</strong> {{ curso.presentation }}</p>
-<p><strong>Competências:</strong> {{ curso.competences }}</p>
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h2>{{ curso.name }}a</h2>
+<ul>
+    {% for disciplina in disciplinasLista %}
+    <li style="margin-bottom: 50px; border-radius: 5px; border-color: blueviolet; background: burlywood; padding: 5px; width: 35%;">
+        {{ disciplina.info.name }} ({{ disciplina.info.year }}º ano/{{ disciplina.info.semester }})
+        <ul>
+            <li>ECTS: {{ disciplina.info.ects }}</li>
+            <li>Curricular Unit Readable Code: {{ disciplina.info.curricularIUnitReadableCode }}</li>
+            <li>Scientific Area: {{ disciplina.info.scientificArea.name }}</li>
+            {%if disciplina.projetos %}
+                <li>Projects:</li>
+                <ul>
+                    {% for projeto in disciplina.projetos %}
+                        <li>
+                            <strong>{{ projeto.descricao }}</strong><br>
+                            Concepts Applied: {{ projeto.conceitos_aplicados }}<br>
+                            Technologies Used: {{ projeto.tecnologias_usadas }}<br>
+                            {% if projeto.imagem %}
+                            <img src="{{ projeto.imagem.url }}" alt="Project Image"><br>
+                            {% endif %}
+                            {% if projeto.video_link %}
+                            <a href="{{ projeto.video_link }}">Video Link</a><br>
+                            {% endif %}
+                            {% if projeto.github_repo_link %}
+                            <a href="{{ projeto.github_repo_link }}">GitHub Repository</a><br>
+                            {% endif %}
+                            {% if projeto.language %}
+                            Programming Language: {{ projeto.language.nome }}<br>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
