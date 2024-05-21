@@ -1,6 +1,10 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
 <h1>Todos os Cursos Disponíveis</h1>
 <ul>
     {% for curso in cursos %}
     <li><a href="{% url 'curso_detail' curso.id %}">{{ curso.name }}</a></li>
     {% endfor %}
 </ul>
+{% endblock content %}

@@ -5,9 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Lucas Botelh - a22201202{% endblock %}</title>
+    <title>{% block title %}Lucas Botelho - a22201202{% endblock %}</title>
     <style>
-        /* Estilos básicos */
+        .block-content-container{
+            padding: 15px;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -40,6 +42,7 @@
             text-decoration: none;
             font-weight: bold;
         }
+        
         footer {
             background-color: #333;
             color: #fff;
@@ -56,13 +59,25 @@
         <nav>
             <h1>{% block header_title %}{% endblock %}</h1>
             <ul>
-                <li><a href="#">Página Inicial</a></li>
+                <li><a href="">Página Inicial</a></li>
+                {% if user.is_authenticated %}
+                    <li>Welcome, {{ user.username }}</li>
+                    <li><a href="{%url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% if 'curso' not in request.path %}
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                {% endif %}
+
+                {% block nav %}
+                {% endblock nav %}
             </ul>
         </nav>
     </header>
     
     <!-- Conteúdo da Página -->
-    <div>
+    <div class="block-content-container">
         {% block content %}{% endblock %}
     </div>
 

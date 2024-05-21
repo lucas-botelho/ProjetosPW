@@ -15,21 +15,9 @@
                 <ul>
                     {% for projeto in disciplina.projetos %}
                         <li>
-                            <strong>{{ projeto.descricao }}</strong><br>
-                            Concepts Applied: {{ projeto.conceitos_aplicados }}<br>
-                            Technologies Used: {{ projeto.tecnologias_usadas }}<br>
-                            {% if projeto.imagem %}
-                            <img src="{{ projeto.imagem.url }}" alt="Project Image"><br>
-                            {% endif %}
-                            {% if projeto.video_link %}
-                            <a href="{{ projeto.video_link }}">Video Link</a><br>
-                            {% endif %}
-                            {% if projeto.github_repo_link %}
-                            <a href="{{ projeto.github_repo_link }}">GitHub Repository</a><br>
-                            {% endif %}
-                            {% if projeto.language %}
-                            Programming Language: {{ projeto.language.nome }}<br>
-                            {% endif %}
+                            <a href="{% url 'projeto_detail' projeto.id %}">
+                                <strong>{{ projeto.descricao }}</strong>
+                            </a>                            
                         </li>
                     {% endfor %}
                 </ul>

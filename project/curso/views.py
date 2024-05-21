@@ -20,3 +20,8 @@ def curso_detail_view(request, curso_id):
         disciplinasLista.append(DisciplinaViewModel(d, Projeto.objects.filter(disciplina = d)))
 
     return render(request, 'curso/curso_detail.html', {'curso': curso, 'disciplinasLista': disciplinasLista})
+
+
+def projeto_detail_view(request, projeto_id):
+    projeto = Projeto.objects.get(pk=projeto_id)
+    return render(request, 'curso/projeto_detail.html', {'projeto': projeto})
