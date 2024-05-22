@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Lucas Botelho - a22201202{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    
     <style>
         .block-content-container{
             padding: 15px;
@@ -52,6 +56,9 @@
             bottom: 0;
             width: 100%;
         }
+
+        {% block style %}{% endblock %}
+        
     </style>
 </head>
 <body>

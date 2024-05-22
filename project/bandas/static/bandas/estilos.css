@@ -1,0 +1,90 @@
+/* Global selector */
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Selectors for classes */
+.red-text {
+    color: red;
+}
+
+.blue-background {
+    background-color: blue;
+}
+
+.large-font {
+    font-size: 20px;
+}
+
+/* Selectors for ids */
+#black-border {
+    border: 1px solid black;
+}
+
+#center-align {
+    text-align: center;
+}
+
+#padding-10 {
+    padding: 10px;
+}
+
+/* Selectors for attributes */
+[type="text"] {
+    width: 200px;
+}
+
+[href^="https://"] {
+    color: green;
+}
+
+[data-custom="true"] {
+    background-color: yellow;
+}
+
+/* Selectors for pseudo-classes */
+a:hover {
+    text-decoration: underline;
+}
+
+input:checked {
+    background-color: pink;
+}
+
+li:first-child {
+    font-weight: bold;
+}
+
+/* Selectors for pseudo-elements */
+p::first-line {
+    font-style: italic;
+}
+
+h1::after {
+    content: " - Title";
+}
+
+span::before {
+    content: ">> ";
+}
+
+/* Selector combinations */
+div p {
+    margin: 10px;
+}
+
+ul > li {
+    list-style-type: square;
+}
+
+h2 ~ p {
+    color: purple;
+}
+
+h3 + p {
+    font-weight: bold;
+}
+
+h4, p {
+    text-align: justify;
+}
