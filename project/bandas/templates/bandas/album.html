@@ -14,4 +14,9 @@
     {% endfor%}
 </ul>
 
+<div>
+    <a href="{% url 'bandas:edit_album' album.id %}" >Edit</a>
+    <a href="{% url 'bandas:delete_album' album.id %}">Delete</a>
+</div>
+
 {% endblock content %}

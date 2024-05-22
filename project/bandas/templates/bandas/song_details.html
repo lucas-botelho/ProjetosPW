@@ -8,6 +8,12 @@
         <li>Duration: {{ song.duration }}</li>
     </ul>
 
+    <div>
+        <a href="{% url 'bandas:edit_song' song.id %}" >Edit</a>
+        <a href="{% url 'bandas:delete_song' song.id %}">Delete</a>
+    </div>
+
     <a href="{% url 'bandas:album_detail' album.id %}">Go back to the album: {{ album.title }}</a>
+
 
 {% endblock %}

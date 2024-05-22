@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Article, Comment
+from django.shortcuts import render, redirect
+from .models import Article, Comment, Author
+from .forms import ArticleForm, AuthorForm
+from django.contrib.auth.decorators import login_required
 
 def article_list(request):
     articles = Article.objects.all()
@@ -9,3 +11,67 @@ def article_detail(request, article_id):
     article = Article.objects.get(id=article_id)
     comments = Comment.objects.filter(article_id=article_id)
     return render(request, 'artigos/article_detail.html', {'article': article, 'comments': comments})
+
+@login_required
+def edit_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('article_detail', article_id=article.id)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, 'artigos/edit_article.html', {'form': form})
+
+@login_required
+def create_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.save()
+            return redirect('article_detail', article_id=article.id)
+    else:
+        form = ArticleForm()
+    return render(request, 'artigos/create_article.html', {'form': form})
+
+@login_required
+def delete_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    if request.method == 'POST':
+        article.delete()
+        return redirect('article_list', article_id=article.id)
+    
+    return render(request, 'artigos/confirm_delete.html', {'article': article})
+
+@login_required
+def edit_author(request, author_id):
+    author = Author.objects.get(id=author_id)
+    if request.method == 'POST':
+        form = AuthorForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+            return redirect('author_detail', author_id=author.id)
+    else:
+        form = AuthorForm(instance=author)
+    return render(request, 'artigos/edit_author.html', {'form': form})
+
+@login_required
+def create_author(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            author = form.save()
+            return redirect('author_detail', author_id=author.id)
+    else:
+        form = AuthorForm()
+    return render(request, 'artigos/create_author.html', {'form': form})
+
+@login_required
+def delete_author(request, author_id):
+    author = Author.objects.get(id=author_id)
+    if request.method == 'POST':
+        author.delete()
+        return redirect('author_list')
+    return render(request, 'artigos/confirm_delete.html', {'author': author})
