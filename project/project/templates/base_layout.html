@@ -2,51 +2,31 @@
 
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Lucas Botelho - a22201202{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bandas/estilos.css' %}">
+
     <style>
-        .block-content-container{
-            padding: 15px;
-        }
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: grid;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 20px;
         }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-right: 20px;
-        }
-        nav ul li:last-child {
-            margin-right: 0;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
+
         footer {
             background-color: #333;
             color: #fff;
@@ -57,24 +37,29 @@
             width: 100%;
         }
 
-        {% block style %}{% endblock %}
-        
+        li{
+            list-style-type: none;        
+
+        }
+
+            {% block style %}{% endblock style %}
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <h1>{% block header_title %}{% endblock %}</h1>
             <ul>
-                <li><a href="">Página Inicial</a></li>
+                <li><a href="{%url 'allapps' %}">Página Inicial</a></li>
                 {% if user.is_authenticated %}
-                    <li>Welcome, {{ user.username }}</li>
-                    <li><a href="{%url 'logout' %}">Logout</a></li>
+                <li><i class="fa-regular fa-user"></i> Welcome, {{ user.username }}</li>
+                <li><i class="fa-solid fa-right-from-bracket"></i> <a href="{%url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% if 'curso' not in request.path %}
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                    {% endif %}
+                <li><i class="fa-solid fa-right-to-bracket"></i> <a href="{% url 'login' %}">Login</a></li>
+                {% if 'curso' not in request.path %}
+                <li><i class="fa-solid fa-user-plus"></i> <a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
                 {% endif %}
 
                 {% block nav %}
@@ -82,14 +67,19 @@
             </ul>
         </nav>
     </header>
-    
+
     <!-- Conteúdo da Página -->
-    <div class="block-content-container">
+    <div class="block-content-container"
+        style="display: flex; flex-direction: column; align-items: center; align-content: center;">
         {% block content %}{% endblock %}
     </div>
 
     <footer>
         <p>&copy; {% block footer_text %} {% now "Y" %} {% endblock %} Lucas Botelho - a22201202 - LEI</p>
     </footer>
+
+    <script src="https://kit.fontawesome.com/fc6a22f7c0.js" crossorigin="anonymous"></script>
+    {% block scripts %}{% endblock %}
 </body>
+
 </html>

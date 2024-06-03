@@ -5,7 +5,7 @@
     <ul>
     {% for genero in generos %}
         <li>
-            <a href="{% url 'genero' genero %}">{{ genero }}</a>
+            <a href="{% url 'biblioteca:genero' genero %}">{{ genero }}</a>
         </li>
     {% endfor %}
     </ul>

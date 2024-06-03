@@ -2,11 +2,56 @@
 
 {% block title %}Projetos{% endblock %}
 
+{% block style %}
+<style>
+    .app-submenu {
+        list-style-type: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        justify-content: center;
+    }
+    .app-submenu li {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .app-submenu li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+    .app-submenu a {
+        display: block;
+        padding: 1rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    .app-submenu a:hover {
+        background-color: #eaeaea;
+    }
+
+    @media (max-width: 480px) {
+        .app-submenu {
+            grid-template-columns: auto;
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock style %}
+
 {% block content %}
     <ul class="app-submenu">
-        <li><a href="{% url 'noobsite' %}">noobsite</a></li>
-        <li><a href="{% url 'pwsite:index' %}">pwsite</a></li>
-        <li><a href="{% url 'bandas:band_list' %}">bandas</a></li>
         <li><a href="{% url 'artigos:article_list' %}">artigos</a></li>
+        <li><a href="{% url 'bandas:band_list' %}">bandas</a></li>
+        <li><a href="{% url 'biblioteca:autores' %}">biblioteca</a></li>
+        <li><a href="{% url 'curso:cursos' %}">cursos</a></li>
+        <li><a href="{% url 'noobsite' %}">noobsite</a></li>
+        <li><a href="{% url 'pwsite:index' %}">pwsite</a></li>  
     </ul>
 {% endblock %}

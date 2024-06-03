@@ -129,4 +129,6 @@ def delete_album(request, album_id):
         album.delete()
         return redirect('bandas:band_list')
     return render(request, 'bandas/delete_album.html', {'album': album})
+ 
+
 

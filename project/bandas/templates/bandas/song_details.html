@@ -6,9 +6,13 @@
         <li>{{ song.title }}</li>
         <li><a href="{{spotify_link}}">Listen in spotify</a></li>
         <li>Duration: {{ song.duration }}</li>
+        <li>Letra: <p>{{ song.letra }}</p></li>
     </ul>
+    <div class="biografia">
+        {{ banda.biografia }}
+    </div>
 
-    <div>
+    <div class="forms-buttons">
         <a href="{% url 'bandas:edit_song' song.id %}" >Edit</a>
         <a href="{% url 'bandas:delete_song' song.id %}">Delete</a>
     </div>
