@@ -47,7 +47,7 @@ def createSong(request):
 @login_required
 def createBand(request):
     if request.method == 'POST':
-        form = BandForm(request.POST)
+        form = BandForm(request.POST, request.FILES)
         if form.is_valid():
             band = form.save(commit=False)
             band.save()
