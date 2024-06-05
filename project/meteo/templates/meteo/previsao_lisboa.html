@@ -1,0 +1,26 @@
+{% extends 'meteo_layout.html' %}
+
+{% block content %}
+<h1>Previsão Meteorológica para Lisboa</h1>
+{% if previsao %}
+    <div style="display: flex; flex-direction: column;">
+        <h1>Lisboa</h1>
+        <p>Data: {{ previsao.forecastDate }}</p>
+        <div style="display: flex; flex-direction: row;">
+            <div style="display: flex; flex-direction: column;">
+                <p>Temperatura Mínima: {{ previsao.tMin }} °C</p>
+                <p>Temperatura Máxima: {{ previsao.tMax }} °C</p>
+            </div>
+            <div style="display: flex;">
+                {% load static %}
+                <img src="{% static 'meteo/w_ic_d_0' %}{{ id_weather_type }}anim.svg' %}" style="width:15ch">
+            </div>
+        </div>
+       
+        <p>Probabilidade de Precipitação: {{ previsao.precipitaProb }} %</p>
+        <p>Descrição: {{ previsao.idWeatherType }}</p>
+    </div>
+{% else %}
+    <p>Não foi possível obter a previsão meteorológica para hoje.</p>
+{% endif %}
+{% endblock %}

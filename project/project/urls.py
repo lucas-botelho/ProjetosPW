@@ -29,4 +29,5 @@ urlpatterns = [
     path('curso/', include('curso.urls')),
     path('autenticacao/', include('autenticacao.urls')),
     path('biblioteca/', include('biblioteca.urls')),
+    path('meteo/', include('meteo.urls')),
 ]

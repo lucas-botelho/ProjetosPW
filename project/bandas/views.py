@@ -60,11 +60,11 @@ def createBand(request):
 @login_required
 def createAlbum(request):
     if request.method == 'POST':
-        form = AlbumForm(request.POST)
+        form = AlbumForm(request.POST, request.FILES)
         if form.is_valid():
-            song = form.save(commit=False)
-            song.save()
-            return redirect('bandas:album_detail', song_id=song.id)
+            album = form.save(commit=False)
+            album.save()
+            return redirect('bandas:album_detail', album_id=album.id)
     else:
         form = AlbumForm()
     
@@ -86,10 +86,10 @@ def edit_song(request, song_id):
 def edit_band(request, band_id):
     band = Band.objects.get(id=band_id)
     if request.method == 'POST':
-        form = BandForm(request.POST, instance=band)
+        form = BandForm(request.POST, request.FILES, instance=band)
         if form.is_valid():
             form.save()
-            return redirect('bands:band_detail', band_id=band.id)
+            return redirect('bandas:band_detail', band_id=band.id)
     else:
         form = BandForm(instance=band)
     return render(request, 'bandas/edit_band.html', {'form': form})
@@ -98,10 +98,10 @@ def edit_band(request, band_id):
 def edit_album(request, album_id):
     album = Album.objects.get(id=album_id)
     if request.method == 'POST':
-        form = AlbumForm(request.POST, instance=album)
+        form = AlbumForm(request.POST, request.FILES, instance=album)
         if form.is_valid():
             form.save()
-            return redirect('bands:album_detail', album_id=album.id)
+            return redirect('bandas:album_detail', album_id=album.id)
     else:
         form = AlbumForm(instance=album)
     return render(request, 'bandas/edit_album.html', {'form': form})

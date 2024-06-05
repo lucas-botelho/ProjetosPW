@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'curso',
     'autenticacao',
     'biblioteca',
+    'meteo',
 ]
 
 MIDDLEWARE = [
