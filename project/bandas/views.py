@@ -111,15 +111,15 @@ def delete_song(request, song_id):
     song = Song.objects.get(id=song_id)
     if request.method == 'POST':
         song.delete()
-        return redirect('bandas:band_list')
-    return render(request, 'bandas/delete.html', {'song': song})
+        return redirect('bandas:index')
+    return render(request, 'bandas/delete_songs.html', {'song': song})
 
 @login_required
 def delete_band(request, band_id):
     band = Band.objects.get(id=band_id)
     if request.method == 'POST':
         band.delete()
-        return redirect('bandas:band_list')
+        return redirect('bandas:index')
     return render(request, 'bandas/delete_band.html', {'band': band})
 
 @login_required
@@ -127,7 +127,7 @@ def delete_album(request, album_id):
     album = Album.objects.get(id=album_id)
     if request.method == 'POST':
         album.delete()
-        return redirect('bandas:band_list')
+        return redirect('bandas:index')
     return render(request, 'bandas/delete_album.html', {'album': album})
  
 

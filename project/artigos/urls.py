@@ -4,7 +4,7 @@ from . import views
 app_name = 'artigos'
 
 urlpatterns = [
-    path('', views.article_list, name='article_list'),
+    path('', views.article_list, name='index'),
     path('article/<int:article_id>/', views.article_detail, name='article_detail'),
     path('article/<int:article_id>/edit/', views.edit_article, name='edit_article'),
     path('article/create/', views.create_article, name='create_article'),

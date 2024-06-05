@@ -6,7 +6,7 @@
         <ul>
             {% for filme in filmes %}
                 <li>
-                    <a href="{% url 'filme_detail' filme.id %}">{{ filme.titulo }}</a>
+                    <a href="{% url 'filmes:filme_detail' filme.id %}">{{ filme.titulo }}</a>
                         <strong>Atores:</strong>
                             {% for ator in filme.atores.all %}
                                 {{ ator.nome }}.

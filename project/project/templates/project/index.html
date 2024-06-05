@@ -47,11 +47,8 @@
 
 {% block content %}
     <ul class="app-submenu">
-        <li><a href="{% url 'artigos:article_list' %}">artigos</a></li>
-        <li><a href="{% url 'bandas:band_list' %}">bandas</a></li>
-        <li><a href="{% url 'biblioteca:autores' %}">biblioteca</a></li>
-        <li><a href="{% url 'curso:cursos' %}">cursos</a></li>
-        <li><a href="{% url 'noobsite' %}">noobsite</a></li>
-        <li><a href="{% url 'pwsite:index' %}">pwsite</a></li>  
+        {% for item in apps %}
+            <li><a href="{% url item.url %}">{{ item.name }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

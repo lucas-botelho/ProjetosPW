@@ -1,0 +1,65 @@
+{% extends 'meteo_layout.html' %}
+
+{% block style %}
+    .container {
+        margin: 20px;
+    }
+    .city-selector {
+        margin-bottom: 20px;
+    }
+    .forecast {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .forecast-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 5px;
+        width: calc(20% - 20px);
+        box-sizing: border-box;
+    }
+{% endblock style %}
+
+{% block content %}
+    <div class="container">
+        <h1>Previsão Meteorológica</h1>
+        <div class="city-selector">
+            <label for="city">Escolha a cidade:</label>
+            <select id="city">
+                <option value="">Selecione uma cidade</option>
+                {% for city in cities %}
+                <option value="{{ city.globalIdLocal }}">{{ city.local }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="forecast" class="forecast"></div>
+    </div>
+
+    <script>
+        document.getElementById('city').addEventListener('change', function() {
+            console.log(this.value);
+            const cityId = this.value;
+            if (cityId) {
+                console.log('Fetching forecast for city', cityId);
+                fetch(`/meteo/previsao/${cityId}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        const forecastDiv = document.getElementById('forecast');
+                        forecastDiv.innerHTML = '';
+                        data.forecast.forEach(day => {
+                            const forecastItem = document.createElement('div');
+                            forecastItem.className = 'forecast-item';
+                            forecastItem.innerHTML = `
+                                <h3>${day.forecastDate}</h3>
+                                <p>Temperatura Mínima: ${day.tMin} °C</p>
+                                <p>Temperatura Máxima: ${day.tMax} °C</p>
+                                <p>${day.weatherDescription}</p>
+                            `;
+                            forecastDiv.appendChild(forecastItem);
+                        });
+                    });
+            }
+        });
+    </script>
+{% endblock %}

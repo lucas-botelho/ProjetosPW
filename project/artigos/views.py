@@ -19,7 +19,7 @@ def edit_article(request, article_id):
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
-            return redirect('article_detail', article_id=article.id)
+            return redirect('artigos:article_detail', article_id=article.id)
     else:
         form = ArticleForm(instance=article)
     return render(request, 'artigos/edit_article.html', {'form': form})
@@ -31,7 +31,7 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.save()
-            return redirect('article_detail', article_id=article.id)
+            return redirect('artigos:article_detail', article_id=article.id)
     else:
         form = ArticleForm()
     return render(request, 'artigos/create_article.html', {'form': form})
@@ -41,7 +41,7 @@ def delete_article(request, article_id):
     article = Article.objects.get(id=article_id)
     if request.method == 'POST':
         article.delete()
-        return redirect('article_list', article_id=article.id)
+        return redirect('artigos:index', article_id=article.id)
     
     return render(request, 'artigos/confirm_delete.html', {'article': article})
 
@@ -52,7 +52,7 @@ def edit_author(request, author_id):
         form = AuthorForm(request.POST, instance=author)
         if form.is_valid():
             form.save()
-            return redirect('author_detail', author_id=author.id)
+            return redirect('artigos:author_detail', author_id=author.id)
     else:
         form = AuthorForm(instance=author)
     return render(request, 'artigos/edit_author.html', {'form': form})

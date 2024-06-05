@@ -10,9 +10,9 @@
         {% endfor %}
     </ul>
 
-    <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}">  <!-- Display the movie image -->
+    <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}">
 
     <p></p>
 
-    <a href="{% url 'lista_filmes' %}">Voltar para a lista de filmes</a>
+    <a href="{% url 'filmes:index' %}">Voltar para a lista de filmes</a>
 {% endblock %}

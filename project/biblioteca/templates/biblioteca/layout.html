@@ -115,7 +115,7 @@
         <h1>Biblioteca da Lusofonía</h1>
 
         <nav>
-            <a href="{% url 'biblioteca:autores' %}"><button>Autores</button></a>
+            <a href="{% url 'biblioteca:index' %}"><button>Autores</button></a>
             <a href="{% url 'biblioteca:generos' %}"><button>Géneros</button></a>
 
             {% if request.user.is_authenticated %}
