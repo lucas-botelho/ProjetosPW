@@ -11,7 +11,7 @@ def previsao_lisboa(request):
         dic_dados = response.json()
         hoje = date.today().strftime('%Y-%m-%d')
         previsao_hoje = next((item for item in dic_dados['data'] if item['forecastDate'] == hoje), None)
-        id_weather_type = previsao_hoje['idWeatherType']
+        id_weather_type = "%02d" % previsao_hoje['idWeatherType']
 
         weather_type_url = 'meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
 
