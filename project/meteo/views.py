@@ -13,9 +13,11 @@ def previsao_lisboa(request):
         previsao_hoje = next((item for item in dic_dados['data'] if item['forecastDate'] == hoje), None)
         id_weather_type = previsao_hoje['idWeatherType']
 
+        weather_type_url = 'meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
+
         contexto = {
             'previsao': previsao_hoje,
-            'id_weather_type': id_weather_type,
+            'weather_type_url': weather_type_url,
         }
         return render(request, 'meteo/previsao_lisboa.html', contexto)
     else:

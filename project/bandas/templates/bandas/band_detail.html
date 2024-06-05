@@ -10,6 +10,7 @@
 
   {% if band.photo %}
     <img src="{{ band.photo.url }}" alt="Foto da banda {{ band.name }}">
+    {{ band.photo.url }}
   {% else %}
     <p>Imagem da banda não disponível.</p>
   {% endif %}

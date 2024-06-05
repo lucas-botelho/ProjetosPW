@@ -12,8 +12,7 @@
                 <p>Temperatura Máxima: {{ previsao.tMax }} °C</p>
             </div>
             <div style="display: flex;">
-                {% load static %}
-                <img src="{% static 'meteo/w_ic_d_0' %}{{ id_weather_type }}anim.svg' %}" style="width:15ch">
+                <img src="{{weather_type_url}}" style="width:15ch">
             </div>
         </div>
        
