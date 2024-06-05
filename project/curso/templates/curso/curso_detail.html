@@ -2,12 +2,24 @@
 
 {% block content %}
     <h2>{{ curso.name }}a</h2>
+
+    <p class="forms-buttons">
+        <a href="{% url 'curso:curso_edit' curso.id  %}">Editar curso</a>
+        <a href="{% url 'curso:curso_delete' curso.id  %}">Apagar curso</a>
+    </p>
+
     <div class="discipline-cards">
         {% for disciplina in disciplinasLista %}
             <div class="card {% if disciplina.projetos %}has-projects{% endif %}">
                 <div class="card-header">
                     {{ disciplina.info.name }} ({{ disciplina.info.year }}º ano/{{ disciplina.info.semester }})
                 </div>
+
+                <p class="forms-buttons">
+                    <a href="{% url 'curso:update_disciplina' disciplina.info.id  %}">Editar</a>
+                    <a href="{% url 'curso:delete_disciplina' disciplina.info.id  %}">Apagar</a>
+                </p>
+
                 <div class="card-body">
                     <ul>
                         <li>ECTS: {{ disciplina.info.ects }}</li>
