@@ -18,7 +18,22 @@
         body {
             margin: 0;
             padding: 0;
+        }
+
+        div.contentor {
             display: grid;
+            grid-template-areas:
+                'header header header'
+                'main main main'
+                'footer footer footer';
+            grid-template-rows: 7vh 100% 11vh; /* Set main content area to auto */
+            gap: 10px;
+            row-gap: 50px;
+        }
+
+
+        div.contentor > * {
+            padding: 10px;
         }
 
         body.light-mode {
@@ -42,21 +57,22 @@
             color: #fff;
         }
 
-        /* General styles */
-        header, footer {
+        header{
             padding: 10px 20px;
-            text-align: center;
+            grid-area: header;
         }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        main{
+            grid-area: main;
+        }
+        footer { 
+            text-align: center;
+            align-content: center;
+            padding: 10px 20px;
+            grid-area: footer;
         }
 
         li{
             list-style-type: none;        
-
         }
 
         .dark-mode-button {
@@ -97,43 +113,44 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <button id="dark-mode-toggle" class="dark-mode-button">
-                <span class="slider"></span>
-            </button>
+    <div class="contentor">
+        <header>
+            <nav>
+                <button id="dark-mode-toggle" class="dark-mode-button">
+                    <span class="slider"></span>
+                </button>
 
-            <h1>{% block header_title %}{% endblock %}</h1>
-            <ul>
-                <li><a href="{%url 'allapps' %}">Página Inicial</a></li>
-                {% if user.is_authenticated %}
-                <li><i class="fa-regular fa-user"></i> Welcome, {{ user.username }}</li>
-                <li><i class="fa-solid fa-right-from-bracket"></i> <a href="{%url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><i class="fa-solid fa-right-to-bracket"></i> <a href="{% url 'login' %}">Login</a></li>
-                {% if 'curso' not in request.path %}
-                <li><i class="fa-solid fa-user-plus"></i> <a href="{% url 'register' %}">Register</a></li>
-                {% endif %}
-                {% endif %}
+                <h1>{% block header_title %}{% endblock %}</h1>
+                <ul>
+                    <li><a href="{%url 'allapps' %}">Página Inicial</a></li>
+                    {% if user.is_authenticated %}
+                    <li><i class="fa-regular fa-user"></i> Welcome, {{ user.username }}</li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i> <a href="{%url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><i class="fa-solid fa-right-to-bracket"></i> <a href="{% url 'login' %}">Login</a></li>
+                    {% if 'curso' not in request.path %}
+                    <li><i class="fa-solid fa-user-plus"></i> <a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                    {% endif %}
 
-                {% block nav %}
-                {% endblock nav %}
-            </ul>
-            
-        </nav>
-    </header>
+                    {% block nav %}
+                    {% endblock nav %}
+                </ul>
+                
+            </nav>
+        </header>
 
-    <!-- Conteúdo da Página -->
-    <div class="block-content-container"
-        style="display: flex; flex-direction: column; align-items: center; align-content: center;">
-        {% block content %}{% endblock %}
+        <!-- Conteúdo da Página -->
+        <main class="block-content-container"
+            style="display: flex; flex-direction: column; align-items: center; align-content: center;">
+            {% block content %}{% endblock %}
+        </main> 
+
+        <footer>
+            <p>&copy; {% block footer_text %} {% now "Y" %} {% endblock %} Lucas Botelho - a22201202 - LEI</p>
+            <p id="relogio"></p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; {% block footer_text %} {% now "Y" %} {% endblock %} Lucas Botelho - a22201202 - LEI</p>
-        <p id="relogio"></p>
-    </footer>
-
     <script src="https://kit.fontawesome.com/fc6a22f7c0.js" crossorigin="anonymous"></script>
     <script>
 
