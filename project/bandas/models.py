@@ -4,7 +4,7 @@ class Band(models.Model):
     name = models.CharField(max_length=100)
     genre = models.CharField(max_length=50)
     formed_in = models.IntegerField()
-    photo = models.FileField(upload_to=None, max_length=100)
+    photo = models.ImageField(upload_to='banda_imagens/', max_length=100)
     info = models.TextField()
     nacionality = models.CharField(max_length=100)
 
@@ -14,7 +14,7 @@ class Band(models.Model):
 class Album(models.Model):
     title = models.CharField(max_length=100)
     release_year = models.IntegerField()
-    cover = models.FileField(upload_to=None, max_length=100)
+    cover = models.ImageField(upload_to='banda_imagens/', max_length=100)
     band = models.ForeignKey(Band, on_delete=models.CASCADE)
 
     def __str__(self):
