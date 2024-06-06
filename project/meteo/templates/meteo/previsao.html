@@ -18,6 +18,27 @@
         width: calc(20% - 20px);
         box-sizing: border-box;
     }
+
+    .invisible{
+        display: none;
+    }
+
+    .btn-meteo {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #eee;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      
+      .btn-meteo:hover {
+        background-color: #ddd;
+      }
+    
 {% endblock style %}
 
 {% block content %}
@@ -33,18 +54,29 @@
             </select>
         </div>
         <div id="forecast" class="forecast"></div>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'meteo:lista_cidades' %}" class="btn-meteo">API com Lista de cidades</a>
+            <a href="{% url 'meteo:previsao_lisboa' %}" class="btn-meteo">Previsao de Lisboa</a>
+            <a id="apiTempoCidade" href="" class="invisible btn-meteo"></a>
+          </div>
+          
     </div>
 
     <script>
         document.getElementById('city').addEventListener('change', function() {
             console.log(this.value);
             const cityId = this.value;
+
+            const apiTempoCidadeBtn = document.getElementById('apiTempoCidade');
+            apiTempoCidadeBtn.classList.remove('invisible');
+            apiTempoCidadeBtn.href = `/meteo/api/tempo/${cityId}/`;
+            apiTempoCidadeBtn.innerText = 'API com Previsão da Cidade';
             if (cityId) {
                 console.log('Fetching forecast for city', cityId);
                 fetch(`/meteo/previsao/${cityId}/`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);
                         const forecastDiv = document.getElementById('forecast');
                         forecastDiv.innerHTML = '';
                         data.forecast.forEach(dailyForecast => {
