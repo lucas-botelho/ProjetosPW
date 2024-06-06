@@ -24,18 +24,22 @@ def edit_article(request, article_id):
         form = ArticleForm(instance=article)
     return render(request, 'artigos/edit_article.html', {'form': form})
 
-@login_required
 def create_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
             article = form.save(commit=False)
+            author, created = Author.objects.get_or_create(
+                name=request.user.first_name,
+                defaults={'bio': ''}
+            )
+            article.author = author
             article.save()
             return redirect('artigos:article_detail', article_id=article.id)
     else:
         form = ArticleForm()
+        form.base_fields['article_id'].initial = Article.objects.latest('article_id').article_id+1
     return render(request, 'artigos/create_article.html', {'form': form})
-
 @login_required
 def delete_article(request, article_id):
     article = Article.objects.get(id=article_id)

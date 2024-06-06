@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='allapps'),
     path('mebyme', views.mebyme, name='mebyme'),
+    path('sobre', views.sobre, name='sobre'),
     path('admin/', admin.site.urls),
     path('noobsite/', include('noobsite.urls')),
     path('pwsite/', include('pwsite.urls')),

@@ -1,0 +1,60 @@
+{%extends 'base_layout.html' %}
+
+{%block style%}
+
+div.parallax {
+margin: 30px;
+border: 3px solid black;
+}
+
+.parallax {
+background-image: url("https://cdn.pixabay.com/photo/2017/01/25/02/09/beach-2006993_960_720.jpg");
+min-height: 200px;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+
+b {
+color: dodgerblue;
+}
+
+{%endblock%}
+
+{%block content%}
+
+<div class="content-container">
+    <!-- Interests Section -->
+    <div class="section" id="interests">
+        <h2>Tecnologias utilizadas no projeto Django</h2>
+        <ul>
+            <li>Python</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Django</li>
+        </ul>
+    </div>
+    <div class="parallax"></div>
+
+    <div style="display: flex; flex-direction: row;">
+
+
+        <div class="section" id="skills" style="width: 50%;">
+            <h2>A minha app Django</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="section" id="experience" style="width: 50%;">
+            <h2>Django: Padrao MVT</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="parallax"></div>
+
+</div>
+
+{%endblock%}

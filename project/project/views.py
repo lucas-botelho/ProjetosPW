@@ -12,3 +12,6 @@ def index(request):
 
 def mebyme(request):
     return render(request, 'project/mebyme.html')
+
+def sobre(request):
+    return render(request, 'project/sobre.html')

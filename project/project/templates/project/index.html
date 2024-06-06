@@ -24,12 +24,28 @@ div.hero .content {
     color: white;
 }
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
 {% endblock%}
 
 {% block content %}
 <div class="hero">
     <div class="content">
         <p class="big-text">This is my portfolio.</p>
+        <a href="{% url 'mebyme' %}" class="button">Know more about me by me</a>
+
     </div>
 </div>
 {% endblock %}
