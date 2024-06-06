@@ -61,7 +61,7 @@ def previsao_lisboa(request):
                 break      
 
         id_weather_type = "%02d" % previsao_hoje['idWeatherType']
-        weather_type_url = '/media/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
+        weather_type_url = '/static/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
 
         weathertypes = requests.get(WEATHER_TYPES_URL)
         descricao = ''
