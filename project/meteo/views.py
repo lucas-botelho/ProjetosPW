@@ -35,7 +35,7 @@ def previsao_cidade(request, city_id):
                         descricao =  weather['descWeatherTypePT']
                         break
                 id_weather_type = "%02d" % item['idWeatherType']
-                weather_type_url = '/media/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
+                weather_type_url = '/static/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
                 
                 prev = {
                     'day': item,
