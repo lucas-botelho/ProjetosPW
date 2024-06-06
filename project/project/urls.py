@@ -19,7 +19,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index_view, name='allapps'),
+    path('', views.index, name='allapps'),
+    path('mebyme', views.mebyme, name='mebyme'),
     path('admin/', admin.site.urls),
     path('noobsite/', include('noobsite.urls')),
     path('pwsite/', include('pwsite.urls')),

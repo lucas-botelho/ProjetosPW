@@ -146,9 +146,9 @@ img {
     border-color: red yellow;
 }
 
-.block-content-container {
+/* .block-content-container {
     padding: 15px;
-}
+} */
 
 
 @media (max-width: 768px) {

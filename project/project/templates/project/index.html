@@ -1,54 +1,35 @@
 {% extends 'base_layout.html' %}
 
-{% block title %}Projetos{% endblock %}
+{%block style%}
 
-{% block style %}
-<style>
-    .app-submenu {
-        list-style-type: none;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        justify-content: center;
-    }
-    .app-submenu li {
-        background-color: #f4f4f4;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .app-submenu li:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    }
-    .app-submenu a {
-        display: block;
-        padding: 1rem;
-        color: #333;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2em;
-    }
-    .app-submenu a:hover {
-        background-color: #eaeaea;
-    }
+div.hero {
+    background-image: url('https://media.istockphoto.com/id/150687910/pt/foto/ser-super.jpg?s=2048x2048&w=is&k=20&c=eAFkL7rP_SptDBf1Yp3XjU5_DsXEXW98aJshz4GijxE=');
+    background-size: cover;
+    background-position: center;
+    height: 75vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    animation: slide-in 1s ease-in-out;
+}
 
-    @media (max-width: 480px) {
-        .app-submenu {
-            grid-template-columns: auto;
-            justify-content: center;
-        }
-    }
-</style>
-{% endblock style %}
+div.hero .content {
+    padding: 40px;
+}
+
+.big-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    color: white;
+}
+
+{% endblock%}
 
 {% block content %}
-    <ul class="app-submenu">
-        {% for item in apps %}
-            <li><a href="{% url item.url %}">{{ item.name }}</a></li>
-        {% endfor %}
-    </ul>
+<div class="hero">
+    <div class="content">
+        <p class="big-text">This is my portfolio.</p>
+    </div>
+</div>
 {% endblock %}
