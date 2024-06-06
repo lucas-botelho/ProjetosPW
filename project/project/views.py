@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-from artigos.models import *
-
 from django.conf import settings
 INSTALLED_APPS = settings.INSTALLED_APPS
 

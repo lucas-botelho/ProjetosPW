@@ -1,0 +1,12 @@
+{% extends 'portfolio_layout.html' %}
+{% block title %}Projetos{% endblock %}
+
+
+{% block content %}
+
+<ul class="app-submenu">
+    {% for item in apps %}
+    <li><a href="{% url item.url %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

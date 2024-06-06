@@ -19,7 +19,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index_view, name='allapps'),
+    path('', include('portfolio.urls')),
+    path('allapps', views.index_view, name='allapps'),
     path('admin/', admin.site.urls),
     path('noobsite/', include('noobsite.urls')),
     path('pwsite/', include('pwsite.urls')),
@@ -30,4 +31,5 @@ urlpatterns = [
     path('autenticacao/', include('autenticacao.urls')),
     path('biblioteca/', include('biblioteca.urls')),
     path('meteo/', include('meteo.urls')),
+    path('portfolio/', include('portfolio.urls')),
 ]
