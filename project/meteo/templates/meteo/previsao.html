@@ -87,7 +87,9 @@
                                 <p>Temperatura Mínima: ${dailyForecast.day.tMin} °C</p>
                                 <p>Temperatura Máxima: ${dailyForecast.day.tMax} °C</p>
                                 <p>Probabilidade chuva: ${dailyForecast.day.precipitaProb}%</p>
-                                <img style="width: 50px; height: 50px;" src="${dailyForecast.weather_type_url}" alt="Weather Type">
+                                <div style="display: flex; width: 50px; height: 50px;">
+                                    <img style="width: 50px; height: 50px;" src="${dailyForecast.weather_type_url}" alt="Weather Type">
+                                </div>
                                 <p>Tempo: ${dailyForecast.weatherDescription}</p>
                             `;
                             forecastDiv.appendChild(forecastItem);
