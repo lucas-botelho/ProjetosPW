@@ -49,3 +49,21 @@ div.hero .content {
     </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('api/tempo/1110600/')
+            .then(response => response.json())
+            .then(data => {
+            const heroDiv = document.querySelector('.hero');
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = 'This is a new div';
+            heroDiv.appendChild(newDiv);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+{% endblock %}

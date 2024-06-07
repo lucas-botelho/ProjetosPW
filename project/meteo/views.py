@@ -111,7 +111,7 @@ def tempo_cidade(request, city_id):
     apiresponse['temperatura_min'] = previsao_hoje['tMin']
     apiresponse['temperatura_max'] = previsao_hoje['tMax']
     id_weather_type = "%02d" % previsao_hoje['idWeatherType']
-    apiresponse['weather_type_url'] = f'https://{request.get_host()}/media/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
+    apiresponse['weather_type_url'] = f'https://{request.get_host()}/static/meteo/w_ic_d_' + str(id_weather_type) + 'anim.svg'
     apiresponse['data'] = previsao_hoje['forecastDate']
     apiresponse['precipitaProb'] = previsao_hoje['precipitaProb']
 
