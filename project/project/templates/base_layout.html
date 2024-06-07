@@ -127,22 +127,25 @@
             }
 
             nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 0;
+                margin: 0;
+                justify-content: center;
+                text-align: center;
             }
 
             nav ul li {
-                display: block;
+                flex: 1 1 auto;
             }
 
             header h1 {
                 font-size: 1.2em;
                 text-align: center;
             }
-        }
 
-        @media (max-width: 480px) {
             header, footer {
                 padding: 5px;
             }
@@ -163,6 +166,14 @@
 
             header h1 {
                 font-size: 1em;
+            }
+
+            .comment {
+                    font-size: 0.8rem; 
+                }
+
+                .listSomething li {
+                font-size: 0.8rem; 
             }
         }
 
@@ -221,12 +232,6 @@
                 display: flex;
                 align-items: center;
                 font-size: 1rem; 
-            }
-
-            @media (max-width: 768px) {
-            .listSomething li {
-                font-size: 0.8rem; 
-            }
             }
 
             .listSomething li:hover {
@@ -290,14 +295,6 @@
             font-style: italic;
             color: #666; 
             }
-
-            @media (max-width: 768px) {
-                .comment {
-                    font-size: 0.8rem; 
-                }
-            }
-
-
         {% block style %}{% endblock style %}
     </style>
 </head>
