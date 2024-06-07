@@ -53,13 +53,19 @@ div.hero .content {
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        fetch('api/tempo/1110600/')
+        fetch('/meteo/api/tempo/1110600/')
             .then(response => response.json())
             .then(data => {
-            const heroDiv = document.querySelector('.hero');
-            const newDiv = document.createElement('div');
-            newDiv.innerHTML = 'This is a new div';
-            heroDiv.appendChild(newDiv);
+                console.log(data);
+                const heroDiv = document.querySelector('.hero');
+                // const newDiv = document.createElement('div');
+                // newDiv.innerHTML = `<div style="display: flex; width: 50px; height: 50px;">
+                //                         <img style="width: 50px; height: 50px;" src="${data.forecast['weather_type_url']}" alt="Weather Type">
+                //                     </div>`;
+                // heroDiv.appendChild(newDiv);
+                heroDiv.insertAdjacentHTML('afterend', `<div style="display: flex; width: 50px; height: 50px;">
+                                                        <img style="width: 50px; height: 50px;" src="${data.forecast['weather_type_url']}" alt="Weather Type">
+                                                    </div>`);
             })
             .catch(error => {
                 console.error('Error:', error);

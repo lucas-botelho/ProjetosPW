@@ -8,17 +8,19 @@
 <p>Data de Criação: {{ article.created_at }}</p>
 
 <h4>Comentários:</h4>
-<ul>
-  {% for comment in comments %}
+<div class="comment">
+
+  <ul>
+    {% for comment in comments %}
     <li>
       <p>{{ comment.content }}</p>
       <p>Autor: {{ comment.author }}</p>
       <p>Data de Criação: {{ comment.created_at }}</p>
     </li>
-  {% empty %}
+    {% empty %}
     <li>Nenhum comentário disponível.</li>
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}
-

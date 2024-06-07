@@ -11,11 +11,12 @@
     <div class="biografia">
         {{ banda.biografia }}
     </div>
-
+    {% if request.user.is_authenticated %}
     <div class="forms-buttons">
         <a href="{% url 'bandas:edit_song' song.id %}" >Edit</a>
         <a href="{% url 'bandas:delete_song' song.id %}">Delete</a>
     </div>
+    {% endif %}
 
     <a href="{% url 'bandas:album_detail' album.id %}">Go back to the album: {{ album.title }}</a>
 
