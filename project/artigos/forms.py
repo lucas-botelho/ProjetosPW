@@ -2,6 +2,7 @@ from django import forms
 from .models import Article, Author
 
 class ArticleForm(forms.ModelForm):
+    
     article_id = forms.IntegerField(widget=forms.HiddenInput(), required=False, initial=Article.objects.latest('article_id').article_id+1)  
     class Meta:
         model = Article

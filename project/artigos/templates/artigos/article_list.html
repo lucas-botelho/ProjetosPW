@@ -17,7 +17,7 @@
 
 {% if request.user.is_authenticated %}
 <div class="forms-buttons">
-    <a href="{% url 'artigos:create_article'%}" >Criar artigo</a>
+    <a href="{% url 'artigos:create_article'%}" id="criarArtigo" >Criar artigo</a>
   </div>
 {% endif %}
 {% endblock %}

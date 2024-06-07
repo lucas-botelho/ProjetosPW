@@ -312,23 +312,23 @@
                     <li><a href="{% url 'allapps' %}">Página Inicial</a></li>
                     {% if user.is_authenticated %}
                     <li><i class="fa-regular fa-user"></i> Welcome, {{ user.username }}</li>
-                    <li><i class="fa-solid fa-right-from-bracket"></i> <a href="{% url 'logout' %}">Logout</a></li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i> <a id="logout" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
-                    <li><i class="fa-solid fa-right-to-bracket"></i> <a href="{% url 'login' %}">Login</a></li>
+                    <li><i class="fa-solid fa-right-to-bracket"></i> <a id="login" href="{% url 'login' %}">Login</a></li>
                     {% if 'curso' not in request.path %}
                     <li><i class="fa-solid fa-user-plus"></i> <a href="{% url 'register' %}">Register</a></li>
                     {% endif %}
                     {% endif %}
 
-                    <li><a href="{% url 'artigos:index' %}">Artigos</a></li>
-                    <li><a href="{% url 'bandas:index' %}">Bandas</a></li>
+                    <li><a href="{% url 'artigos:index' %}" id="artigos">Artigos</a></li>
+                    <li><a href="{% url 'bandas:index' %}" id="bandas">Bandas</a></li>
                     <li><a href="{% url 'biblioteca:index' %}">Biblioteca</a></li>
-                    <li><a href="{% url 'curso:index' %}">Curso</a></li>
+                    <li><a href="{% url 'curso:index' %}" id="curso">Curso</a></li>
                     <li><a href="{% url 'filmes:index' %}">Filmes</a></li>
                     <li><a href="{% url 'meteo:index' %}">Meteo</a></li>
                     <li><a href="{% url 'noobsite:index' %}">Noobsite</a></li>
                     <li><a href="{% url 'pwsite:index' %}">Pwsite</a></li>
-                    <li><a href="{% url 'sobre' %}">DOCKA Project</a></li>
+                    <li><a href="{% url 'sobre' %}" id="project">DOCKA Project</a></li>
                 </ul>
             </nav>
         </header>
