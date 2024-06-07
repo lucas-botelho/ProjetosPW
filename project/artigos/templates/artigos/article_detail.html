@@ -23,4 +23,10 @@
   </ul>
 </div>
 
+{% if request.user.is_authenticated %}
+<div class="forms-buttons">
+    <a href="{% url 'artigos:create_comment' article.id%}" >Adicionar comentario</a>
+  </div>
+{% endif %}
+
 {% endblock %}

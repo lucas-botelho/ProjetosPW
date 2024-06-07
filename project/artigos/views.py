@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Article, Comment, Author
-from .forms import ArticleForm, AuthorForm
+from .forms import ArticleForm, AuthorForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 def article_list(request):
@@ -24,6 +24,7 @@ def edit_article(request, article_id):
         form = ArticleForm(instance=article)
     return render(request, 'artigos/edit_article.html', {'form': form})
 
+@login_required
 def create_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
@@ -40,6 +41,8 @@ def create_article(request):
         form = ArticleForm()
         form.base_fields['article_id'].initial = Article.objects.latest('article_id').article_id+1
     return render(request, 'artigos/create_article.html', {'form': form})
+
+
 @login_required
 def delete_article(request, article_id):
     article = Article.objects.get(id=article_id)
@@ -79,3 +82,20 @@ def delete_author(request, author_id):
         author.delete()
         return redirect('author_list')
     return render(request, 'artigos/confirm_delete.html', {'author': author})
+
+
+@login_required
+def create_comment(request, article_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            article = Article.objects.get(id=article_id)
+            comment.author = Author.objects.get(id=article.author.id)
+            comment.article = article
+            comment.save()
+            return redirect('artigos:article_detail', article_id=article_id)
+    else:
+        form = CommentForm()
+        
+    return render(request, 'artigos/create_comment.html', {'form': form})
